@@ -15,16 +15,21 @@ go build -o linkshorty.exe
 
 ```
 Run the commands:
+
 ```
 .\linkshorty.exe add -url https://example.com
 ```
-    - choose an url to create the slug for (persisting in the file)
+
+- choose an url to create the slug for (persisting in the file)
     
 ```
 .\linkshorty.exe list
 ```
-    - list all the existing slugs and their respective URLs
+
+- list all the existing slugs and their respective URLs
+
 ```
 .\linkshorty.exe get -slug {slug value}
 ```
-    - get the URL of a specific slug
+
+- get the URL of a specific slug
