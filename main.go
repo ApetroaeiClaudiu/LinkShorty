@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"net/url"
 )
 
 var store *URLStore
@@ -40,11 +41,18 @@ func shortenHandler(w http.ResponseWriter, r *http.Request) {
 		r.ParseForm()
 		longURL := r.FormValue("url")
 
-		// Check if URL already exists
+		// Validate URL
+		_, err := url.ParseRequestURI(longURL)
+		if err != nil {
+			message := template.HTML("<span style='color:red;'>Invalid URL format. Please try again.</span>")
+			templates.ExecuteTemplate(w, "home.html", message)
+			return
+		}
+
 		existingSlug := store.FindSlugByURL(longURL)
 		if existingSlug != "" {
-			fmt.Printf("URL already shortened: http://localhost:8080/r/%s\n", existingSlug)
-			http.Redirect(w, r, "/list", http.StatusSeeOther)
+			message := template.HTML(fmt.Sprintf("This URL has already been shortened: <a href='http://localhost:8080/r/%s'>http://localhost:8080/r/%s</a>", existingSlug, existingSlug))
+			templates.ExecuteTemplate(w, "home.html", message)
 			return
 		}
 
