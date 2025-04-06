@@ -28,6 +28,11 @@ Create the executable:
 go build -o linkshorty.exe
 ```
 
+Run tests:
+```
+go test -v
+```
+
 Run the server:
 ```
 go run main.go storage.go
