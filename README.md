@@ -41,11 +41,11 @@ Go to http://localhost:8080
 
 Use cases:
 ```
-Enter a URL:
+Enter a URL to shorten it
 ```
 ```
-The shorten URL is created and displayed
+View the list of all shortened urls and be able to directly access them.
 ```
 ```
-Clicking on the shortened URL redirects you to the original URL
+Validation for invalid URLs and duplicate URLs
 ```
